@@ -1,8 +1,6 @@
 <?php
 
 
-
-
 $listChars = [
     'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
     '0123456789',
@@ -13,10 +11,7 @@ $listChars = [
 // altrimenti assume il valore passato
 $characters = $_GET['characters'] ?? [0,1,2];
 
-
-
 require_once 'functions.php';
-
 
 // se invio la lunghezza della psw
 if(!empty($_GET['length'])){

@@ -34,7 +34,6 @@ function generatePassword($length, $listChars, $characters){
 
 
 function getChar($listChars, $characters){
-
   // esctraggo l'indice dell'array di caratteri
   $index = $characters[rand(0, count($characters) -1 )];
   // prendo la lista di caratteri estratta
