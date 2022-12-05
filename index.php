@@ -1,9 +1,19 @@
 <?php
 
-var_dump($_GET);
 
 
-$listChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?&%$<>^+-*/()[]{}@#_=';
+
+$listChars = [
+    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    '0123456789',
+    '!?&%$<>^+-*/()[]{}@#_='
+];
+
+// se non è stata scelta una tipologia di caratteri l'array per l'estrazione è completo
+// altrimenti assume il valore passato
+$characters = $_GET['characters'] ?? [0,1,2];
+
+
 
 require_once 'functions.php';
 
@@ -16,11 +26,11 @@ if(!empty($_GET['length'])){
     }else{
         // genero la psw
         // andrà in sessione....
-        $password = generatePassword($_GET['length'], $listChars);
+        $password = generatePassword($_GET['length'], $listChars, $characters);
         $output = $password;
         session_start();
         $_SESSION['password'] = $password;
-       // header('Location: ./success.php');
+        header('Location: ./success.php');
     }
 }else{
     // se non invio la lunghezza della psw
