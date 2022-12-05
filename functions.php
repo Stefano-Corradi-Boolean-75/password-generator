@@ -5,11 +5,17 @@ function generatePassword($lenght, $listChars){
   $psw = '';
 
 
-  for($i = 0; $i < $lenght; $i++){
+  while(strlen($psw) < $lenght){
 
-    $psw .= getChar($listChars);
+    $char = getChar($listChars);
+
+    // eventuale controllo univocità
+    if($_GET['allow-duplicates'] || !str_contains($psw, $char)){
+      $psw .= $char;
+    }
 
   }
+
 
   return $psw;
 }

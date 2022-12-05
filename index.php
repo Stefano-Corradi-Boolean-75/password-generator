@@ -17,9 +17,10 @@ if(!empty($_GET['length'])){
         // genero la psw
         // andrà in sessione....
         $password = generatePassword($_GET['length'], $listChars);
+        $output = $password;
         session_start();
         $_SESSION['password'] = $password;
-        header('Location: ./success.php');
+       // header('Location: ./success.php');
     }
 }else{
     // se non invio la lunghezza della psw
@@ -58,7 +59,7 @@ if(!empty($_GET['length'])){
                 
                     <div class="col-7">
                         <div class="alert alert-info" role="alert">
-                            <?php echo $output ?>
+                            <?php echo htmlspecialchars($output) ?>
                         </div>
                     </div>
                
